@@ -2,19 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { UserDetailModalComponent } from '../../user-detail-modal/user-detail-modal.component';
-import { MatDialog } from '@angular/material/dialog'; 
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-list',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
   users: any[] = [];
 
-  constructor(private userService: UserService, public dialog: MatDialog) { }
+  constructor(private userService: UserService, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(data => {
@@ -26,7 +25,7 @@ export class UserListComponent implements OnInit {
         const month = String(joinedDate.getMonth() + 1).padStart(2, '0');
         const year = joinedDate.getFullYear();
         const formattedDate = `${day}-${month}-${year}`;
-        
+
         return {
           userId: user.userId || '-',
           username: user.username || '-',
@@ -53,10 +52,15 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  openDialog(user: any): void {
+  openDialog(user: any = null): void {
+    const data = user ? user : { isNew: true }; // If no user is passed, assume creating a new user
     this.dialog.open(UserDetailModalComponent, {
-      data: user,
-      width: '600px' 
+      data: data,
+      width: '600px'
     });
+  }
+
+  onCreateNewUser() {
+    this.openDialog(); 
   }
 }
