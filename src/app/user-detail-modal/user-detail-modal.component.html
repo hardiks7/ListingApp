@@ -1,0 +1,35 @@
+<div class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold">User Details</h2>
+      <button (click)="close()" class="text-red-500 hover:text-red-700">Close</button>
+    </div>
+
+    <!-- User Details Section -->
+    <div class="mb-6">
+      <div class="flex justify-center mb-7">
+        <img [src]="data.profilePic" alt="Profile" class="w-24 h-24 object-cover rounded-full border-2 border-gray-300 cursor-pointer">
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div *ngIf="data.userId" class="font-semibold">User Id: <span>{{ data.userId }}</span></div>
+        <div *ngIf="data.username" class="font-semibold">Username: <span>{{ data.username }}</span></div>
+        <div *ngIf="data.fullName" class="font-semibold">Full Name: <span>{{ data.fullName }}</span></div>
+        <div *ngIf="data.email" class="font-semibold">Email: <span>{{ data.email }}</span></div>
+        <div *ngIf="data.location" class="font-semibold">Location: <span>{{ data.location }}</span></div>
+        <div *ngIf="data.contactInfo?.phone" class="font-semibold">Phone: <span>{{ data.contactInfo.phone }}</span></div>
+        <div *ngIf="data.contactInfo?.secondaryEmail" class="font-semibold">Secondary Email: <span>{{ data.contactInfo.secondaryEmail }}</span></div>
+        <div *ngIf="data.contactInfo?.joinedDate" class="font-semibold">Joined Date: <span>{{ data.contactInfo.joinedDate }}</span></div>
+        <div *ngIf="data.bio" class="font-semibold">Bio: <span>{{ data.bio }}</span></div>
+        <div *ngIf="data.hobbies" class="font-semibold">Hobbies: <span>{{ data.hobbies }}</span></div>
+        <div *ngIf="data.birthdate" class="font-semibold">Birthdate: <span>{{ data.birthdate }}</span></div>
+        <div *ngIf="data.language" class="font-semibold">Language: <span>{{ data.language }}</span></div>
+        <div *ngIf="data.education" class="font-semibold">Education: <span>{{ data.education }}</span></div>
+        <div *ngIf="data.work" class="font-semibold">Work: <span>{{ data.work }}</span></div>
+        <div *ngIf="data.relationshipStatus" class="font-semibold">Relationship Status: <span>{{ data.relationshipStatus }}</span></div>
+        <div *ngIf="data.gender" class="font-semibold">Gender: <span>{{ data.gender }}</span></div>
+        <div *ngIf="data.pronouns" class="font-semibold">Pronouns: <span>{{ data.pronouns }}</span></div>
+        <div *ngIf="data.interests" class="font-semibold">Interests: <span>{{ data.interests }}</span></div>
+      </div>
+    </div>
+
