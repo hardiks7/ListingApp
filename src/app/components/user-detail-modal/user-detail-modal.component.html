@@ -1,0 +1,141 @@
+<div class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-xl font-bold">{{ isNew ? 'Create New User' : 'Edit User' }}</h2>
+      <button (click)="close()" class="text-red-500 hover:text-red-700">Close</button>
+    </div>
+
+    <!-- Form Section -->
+    <form [formGroup]="userForm" (ngSubmit)="save()">
+      <div class="grid grid-cols-2 gap-1.5">
+        <div>
+          <label class="block text-sm font-bold mb-2">User Id:</label>
+          <input formControlName="userId" class="w-full p-2 border rounded" readonly>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Username:</label>
+          <input formControlName="username" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('username')?.touched && userForm.get('username')?.invalid" class="text-red-500 text-sm">
+            <div *ngIf="userForm.get('username')?.errors">Username is required.</div>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Full Name:</label>
+          <input formControlName="fullName" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('fullName')?.touched && userForm.get('fullName')?.invalid" class="text-red-500">
+            <div *ngIf="userForm.get('fullName')?.errors">Full Name is required.</div>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Email:</label>
+          <input formControlName="email" type="email" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid" class="text-red-500 text-sm">
+            <div *ngIf="userForm.get('email')?.errors">Email is required.</div>
+            <div *ngIf="userForm.get('email')?.errors">Invalid email format.</div>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Location:</label>
+          <input formControlName="location" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('location')?.touched && userForm.get('location')?.invalid" class="text-red-500 text-sm">
+            Location is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Phone:</label>
+          <input formControlName="contactInfo.phone" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('contactInfo.phone')?.touched && userForm.get('contactInfo.phone')?.invalid" class="text-red-500 text-sm">
+            Phone number is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Secondary Email:</label>
+          <input formControlName="contactInfo.secondaryEmail" type="email" class="w-full p-2 border rounded">
+          <div *ngIf="userForm.get('contactInfo.secondaryEmail')?.touched && userForm.get('contactInfo.secondaryEmail')?.invalid" class="text-red-500 text-sm">
+            <div *ngIf="userForm.get('contactInfo.secondaryEmail')?.errors">Invalid secondary email format.</div>
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Joined Date:</label>
+          <input formControlName="contactInfo.joinedDate" type="date" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('contactInfo.joinedDate')?.touched && userForm.get('contactInfo.joinedDate')?.invalid" class="text-red-500 text-sm">
+            Joined Date is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Bio:</label>
+          <textarea formControlName="bio" class="w-full p-2 border rounded" required></textarea>
+          <div *ngIf="userForm.get('bio')?.touched && userForm.get('bio')?.invalid" class="text-red-500 text-sm">
+            Bio is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Hobbies:</label>
+          <input formControlName="hobbies" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('hobbies')?.touched && userForm.get('hobbies')?.invalid" class="text-red-500 text-sm">
+            Hobbies are required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Birthdate:</label>
+          <input formControlName="birthdate" type="date" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('birthdate')?.touched && userForm.get('birthdate')?.invalid" class="text-red-500 text-sm">
+            Birthdate is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Language:</label>
+          <input formControlName="language" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('language')?.touched && userForm.get('language')?.invalid" class="text-red-500 text-sm">
+            Language is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Education:</label>
+          <input formControlName="education" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('education')?.touched && userForm.get('education')?.invalid" class="text-red-500 text-sm">
+            Education is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Work:</label>
+          <input formControlName="work" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('work')?.touched && userForm.get('work')?.invalid" class="text-red-500 text-sm">
+            Work information is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Relationship Status:</label>
+          <input formControlName="relationshipStatus" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('relationshipStatus')?.touched && userForm.get('relationshipStatus')?.invalid" class="text-red-500 text-sm">
+            Relationship Status is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Gender:</label>
+          <input formControlName="gender" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('gender')?.touched && userForm.get('gender')?.invalid" class="text-red-500 text-sm">
+            Gender is required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Pronouns:</label>
+          <input formControlName="pronouns" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('pronouns')?.touched && userForm.get('pronouns')?.invalid" class="text-red-500 text-sm">
+            Pronouns are required.
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-bold mb-2">Interests:</label>
+          <input formControlName="interests" class="w-full p-2 border rounded" required>
+          <div *ngIf="userForm.get('interests')?.touched && userForm.get('interests')?.invalid" class="text-red-500 text-sm">
+            Interests are required.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="mt-4 p-2 bg-blue-500 text-white rounded">Save</button>
+      <button type="button" (click)="close()" class="mt-4 p-2 bg-gray-300 text-black rounded">Cancel</button>
+    </form>
+  </div>
+</div>

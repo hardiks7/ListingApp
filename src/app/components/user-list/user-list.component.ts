@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
-import { UserDetailModalComponent } from '../../user-detail-modal/user-detail-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { UserDetailModalComponent } from '../user-detail-modal/user-detail-modal.component';
 
 @Component({
   selector: 'app-user-list',
@@ -13,7 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class UserListComponent implements OnInit {
   users: any[] = [];
 
-  constructor(private userService: UserService, public dialog: MatDialog) {}
+  constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(data => {
@@ -61,6 +61,6 @@ export class UserListComponent implements OnInit {
   }
 
   onCreateNewUser() {
-    this.openDialog(); 
+    this.openDialog();
   }
 }
