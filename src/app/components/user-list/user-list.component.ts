@@ -53,7 +53,7 @@ export class UserListComponent implements OnInit {
   }
 
   openDialog(user: any = null): void {
-    const data = user ? user : { isNew: true }; // If no user is passed, assume creating a new user
+    const data = user ? user : { isNew: true }; 
     this.dialog.open(UserDetailModalComponent, {
       data: data,
       width: '600px'

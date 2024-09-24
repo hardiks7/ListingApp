@@ -5,7 +5,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
+// import { ToastrModule } from 'ngx-toastr';
+import { UserDetailModalComponent } from './components/user-detail-modal/user-detail-modal.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     FormsModule,
     // ToastrModule.forRoot()
+    UserDetailModalComponent
   ],
   schemas: [NO_ERRORS_SCHEMA],
   providers: [],
