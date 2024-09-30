@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { UserDetailModalComponent } from '../user-detail-modal/user-detail-modal.component';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user-list',
@@ -52,15 +52,31 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  openDialog(user: any = null): void {
-    const data = user ? user : { isNew: true }; 
+  
+
+  // Open the edit dialog when clicking the edit icon
+  openEditDialog(user: any): void {
     this.dialog.open(UserDetailModalComponent, {
-      data: data,
+      data: { ...user, isEditMode: true },
       width: '600px'
     });
   }
 
+  // Delete user action
+  onDeleteUser(userId: string): void {
+    if (confirm('Are you sure you want to delete this user?')) {
+      this.userService.deleteUser(userId).subscribe(() => {
+        this.users = this.users.filter(user => user.userId !== userId);
+        alert('User deleted successfully');
+      });
+    }
+  }
+
+  // Open the dialog for creating a new user
   onCreateNewUser() {
-    this.openDialog();
+    this.dialog.open(UserDetailModalComponent, {
+      data: { isNew: true },
+      width: '600px'
+    });
   }
 }

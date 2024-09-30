@@ -1,0 +1,8 @@
+<h3>{{ subProduct }} Details</h3>
+<ul>
+  <li *ngFor="let subSubProduct of subSubProducts" (click)="viewSubSubProduct(subSubProduct)">
+    {{ subSubProduct }}
+  </li>
+</ul>
+
+<router-outlet></router-outlet> 

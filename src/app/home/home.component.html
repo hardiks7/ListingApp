@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <form [formGroup]="bioForm" (ngSubmit)="submitForm()" class="mt-5">
+    <div class="row col-md-6">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input type="text" formControlName="name" matInput placeholder="Ex. Hardik Sinh" />
+      </mat-form-field>
+    </div>
+    <div class="row col-md-6">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" formControlName="email" matInput placeholder="Ex. hardik.test@test.com" />
+      </mat-form-field>
+    </div>
+
+    <h4>Bio</h4>
+    <ckeditor formControlName="bioContent" [editor]="Editor"></ckeditor>
+
+    <button class="btn btn-success mt-3" type="submit">Submit</button>
+  </form>
+</div>
